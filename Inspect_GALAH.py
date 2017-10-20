@@ -5,7 +5,7 @@
 # 
 # Author: Sven Buder
 
-# In[286]:
+# In[ ]:
 
 # Compatibility with Python 3
 from __future__ import (absolute_import, division, print_function)
@@ -37,7 +37,7 @@ from matplotlib.backends.backend_pdf import PdfPages
 
 # First be sure you are in the right directory and where your spectra and SME/Cannon files are:
 
-# In[287]:
+# In[ ]:
 
 print('Your working directory is '+os.getcwd())
 
@@ -46,7 +46,7 @@ print('Your working directory is '+os.getcwd())
 
 # # Create 'fits' class and fill with necessary data and enable plot routines
 
-# In[288]:
+# In[ ]:
 
 def get_fits_data(directory='default',sobject_id=140708006401203):
     """
@@ -87,11 +87,11 @@ def get_fits_data(directory='default',sobject_id=140708006401203):
         ws=door[0].header["CRVAL1"]
         inc=door[0].header["CDELT1"]
         nax=door[0].header["NAXIS1"]
-        spectrum['ccd'+str(each)+'_wave_raw']=map(lambda x:((x+1)*inc+ws),range(0,nax))
+        spectrum['ccd'+str(each)+'_wave_raw']=(np.arange(0,nax) + 1)*inc+ws
         ws=door[4].header["CRVAL1"]
         inc=door[4].header["CDELT1"]
         nax=door[4].header["NAXIS1"]
-        spectrum['ccd'+str(each)+'_wave_norm']=map(lambda x:((x+1)*inc+ws),range(0,nax))
+        spectrum['ccd'+str(each)+'_wave_norm']=(np.arange(0,nax) + 1)*inc+ws
 
         spectrum['ccd'+str(each)+'_sob_raw'] = door[0].data
         spectrum['ccd'+str(each)+'_sob_norm'] = door[4].data
@@ -379,14 +379,14 @@ class fits_class(object):
 
 # # Now let's create the class FITS for a given sobject_id and use the provided functions on it!
 
-# In[289]:
+# In[ ]:
 
 fits = fits_class(sobject_id=140708006401203)
 
 
 # ## Assuming you want to look at specific lines (and check RV), then use define the 'help_lines' variable before plotting, otherwise define 'help_line=False'
 
-# In[290]:
+# In[ ]:
 
 help_lines=False
 help_lines=[
@@ -398,28 +398,28 @@ help_lines=[
 
 # ## Plot normalised spectrum on 4 axes
 
-# In[291]:
+# In[ ]:
 
 fits.plot_norm_spectrum_on4axes(help_lines=help_lines)
 
 
 # ## Plot raw spectrum on 4 axes
 
-# In[292]:
+# In[ ]:
 
 fits.plot_raw_spectrum_on4axes(help_lines=help_lines)
 
 
 # ## Plot Hbeta / Halpha / Li windows
 
-# In[294]:
+# In[ ]:
 
 fits.plot_HbHaLi()
 
 
 # # Routine to get SME data in class 'sme'
 
-# In[430]:
+# In[ ]:
 
 def get_sme_data(directory='OUTPUT',field='bmstar',sobject_id=140708006401203,setup='DR2',mode='all',show_na=False):
     """
@@ -667,12 +667,12 @@ class sme_class(object):
 
 # Try this to call the function with default values:
 
-# In[431]:
+# In[ ]:
 
 sme = sme_class(sobject_id=140708006401203)
 
 
-# In[432]:
+# In[ ]:
 
 for each_mode in sme.sme['mode']:
     sme.plot_mode(each_mode)
