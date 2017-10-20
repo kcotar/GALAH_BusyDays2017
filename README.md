@@ -16,8 +16,11 @@ mode = [
 'Sm', 'Eu', 'Eu5819', 'Eu6645'
 ]
 
-## Inspect_GALAH.pro
-is an IDL routine that allows you to read in SME and FITS files in to dictionary structures called SME and IRAF, update for CANNON to follow
-
 ## Inspect_GALAH.ipynb
 is a Python routine that allows you to read in SME and FITS files in to dictionary structures called SME and IRAF, update for CANNON to follow
+
+## IDL/inspect_GALAH.pro
+is an IDL routine that allows you to read in SME and FITS files in to dictionary structures called SME and IRAF, update for CANNON to follow
+
+## IDL/inspect.pro
+is an IDL routine that plots the SME output in a PS file
